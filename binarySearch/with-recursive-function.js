@@ -13,10 +13,9 @@ function binarySearch(numberToCheck, minIndex = 0, maxIndex = primes.length){
     }
         
     if (guessedNumber > numberToCheck){
-        console.log('guessedIndex', guessedIndex);
-        binarySearch(numberToCheck, minIndex, guessedIndex - 1);
+        return binarySearch(numberToCheck, minIndex, guessedIndex - 1);
     } else {
-        binarySearch(numberToCheck, guessedIndex + 1, maxIndex);
+        return binarySearch(numberToCheck, guessedIndex + 1, maxIndex);
     }
 }
 
