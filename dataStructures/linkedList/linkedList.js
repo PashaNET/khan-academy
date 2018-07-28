@@ -11,15 +11,60 @@ class LinkedList {
         this.head = null
     }
 
-    // methods to implement:
+    peekHead() {
+        return this.head;
+    }
+    
+    size() {
+        return this.length;
+    }
+    
+    add(value) {
+        newNode = new Node(value);
+        if(!this.head){
+            this.head = newNode;
+        } else {
+            this.head.next = newNode;
+            this.head = this.head.next;
+        }
+        this.length++
 
-    // peekHead()
-    // size()
-    // add(value)
-    // addAt(index)
+        return this.head;
+    }
+
+    addAt(index, value) {
+        if(index < 0 || index > this.length){
+            return null;
+        }
+
+        let currentNode = this.head,
+            currentIndex = 0,
+            newNode = new Node(value);
+
+        if(index === 0){
+            newNode.next = currentNode;
+            this.head = newNode;
+        } else {
+            while(currentIndex < index){
+                previousNode = currentNode;
+                currentNode = currentNode.next;
+                currenIndex++;
+            }
+            
+            newNode.next = currentNode;
+            previousNode.next = newNode;
+        }
+        this.length++;
+
+        return true;
+    }
+
     // remove(value)
     // removeAt(index)
     // indexOf(value)
     // elementAt(index)
-    // isEmpty()
+
+    isEmpty() {
+        return this.head == null;
+    }
 }
