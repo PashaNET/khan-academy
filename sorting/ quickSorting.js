@@ -17,4 +17,4 @@ function quickSort(unsortedArray){
     });
 
     return quickSort(elLessThanBasic).concat([basicElement], quickSort(elMoreThanBasic));
-}
+} 
