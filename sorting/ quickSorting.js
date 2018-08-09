@@ -1,6 +1,6 @@
 function quickSort(unsortedArray){
     let arrayLength = unsortedArray.length;
-    if(arrayLength >= 1){
+    if(arrayLength <= 1){
         return unsortedArray;
     }
     let middleIndex = Math.round(arrayLength/2);
@@ -18,3 +18,6 @@ function quickSort(unsortedArray){
 
     return quickSort(elLessThanBasic).concat([basicElement], quickSort(elMoreThanBasic));
 } 
+
+let test = [1, 5, 3, 2, 6, 4];
+console.log(quickSort(test));
