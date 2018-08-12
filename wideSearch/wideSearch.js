@@ -1,4 +1,4 @@
-//list of people with professions
+
 let you = {
     name: "name",
     friends: []
@@ -15,16 +15,20 @@ function findFriendWithProfession(person, profession){
         queue = people[person];
 
     while(queue.length > 0){
-        let person = queue.shift();
-        if(!alreadyChecked.indexOf(person) > -1){
-            if(isPersonHasProffession(profession)){
-                console.log('Friend ' + person + ' has needed knowledge');
+        let friend = queue.shift();
+        if(!alreadyChecked.indexOf(friend) > -1){
+            if(isPersonHasProffession(friend, profession)){
+                console.log('Friend ' + friend + ' has needed knowledge');
                 return true;
             } else {
-                queue.concat(people[person]);
+                queue = queue.concat(people[friend]);
             }
         }
     }
+}
+
+function isPersonHasProffession(person, profession){
+    return person.indexOf(profession) > -1;
 }
 
 findFriendWithProfession('you', 'ash');
