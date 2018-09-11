@@ -30,11 +30,28 @@ let parents = {
     b: 'start'
 }
 
-let node = findLowestCostNode(costs)
+let procededNodes = {};
 
-function findLowestCostNode(costs) {
-    let lowestValue = 0;
-    
+let node = findLowestCostNode(costs)
+console.log(node);
+
+while(node){
+
+    // node = findLowestCostNode(costs)
 }
 
-let procededNodes = [];
+function findLowestCostNode(costs) {
+    let lowestNode;
+    let nodeName;
+    for(name in costs){
+        if(typeof(lowestNode) == 'undefined'){
+            lowestNode = costs[name];
+        } else {
+            if(costs[name] < lowestNode) nodeName = name;
+        }
+    }
+    //add to proceded ' check word
+    //return false when there left no unhandled items
+    return nodeName;
+}
+
