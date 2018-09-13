@@ -1,6 +1,6 @@
 /* 
  * example of Dijkstra algorithm
- * a method how to find shorte way from 'start' to the 'end' on current graph structure
+ * a method how to find shortest way from 'start' to the 'end' on current graph structure
  */
 
 //hashes - graph, value, parents
@@ -30,28 +30,39 @@ let parents = {
     b: 'start'
 }
 
-let procededNodes = {};
+let processedNodes = [];
 
 let node = findLowestCostNode(costs)
 console.log(node);
 
 while(node){
+    let nodeCost = costs[node],
+        neighbors = graph[node];
 
-    // node = findLowestCostNode(costs)
+    for(neighbor in neighbors){
+        let newNodeCost = nodeCost + costs[neighbor];
+        if(costs[neighbor] > newNodeCost){
+            costs[neighbor] = newNodeCost;
+            parents[neighbor] = node;
+        }
+    }
+    processedNodes.push(node)
+    node = findLowestCostNode(costs)
 }
+
+console.log(costs, parents);
 
 function findLowestCostNode(costs) {
     let lowestNode;
     let nodeName;
-    for(name in costs){
+    for(name in costs) { 
         if(typeof(lowestNode) == 'undefined'){
             lowestNode = costs[name];
         } else {
             if(costs[name] < lowestNode) nodeName = name;
         }
     }
-    //add to proceded ' check word
-    //return false when there left no unhandled items
-    return nodeName;
+
+    return processedNodes.indexOf(nodeName) === -1 ? nodeName : false;
 }
 
